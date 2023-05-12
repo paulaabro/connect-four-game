@@ -105,14 +105,11 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
     background-color: ${(props) => props.theme.purple};
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: ${(props) => props.theme.black};
   }
 
   button {
+    transition: all 400ms;
     cursor: pointer;
   }
 `;
