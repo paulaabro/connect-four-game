@@ -100,4 +100,9 @@ export const GlobalStyle = createGlobalStyle`
   :where(dialog:modal) {
     all: revert;
   }
+
+  body {
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+  }
 `;
