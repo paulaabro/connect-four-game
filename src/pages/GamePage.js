@@ -5,6 +5,9 @@ import playerOne from "../assets/images/player-one.svg";
 import you from "../assets/images/you.svg";
 import cpu from "../assets/images/cpu.svg";
 import playerTwo from "../assets/images/player-two.svg";
+import Top from "../components/Top";
+import { styled } from "styled-components";
+import GameBoard from "../components/GameBoard";
 
 export default function GamePage() {
   const { opponent } = useParams();
@@ -22,7 +25,16 @@ export default function GamePage() {
   return (
     <Page>
       <PlayerCard play={play1} score="11" />
+      <Main>
+        <Top />
+        <GameBoard />
+      </Main>
       <PlayerCard play={play2} score="20" />
     </Page>
   );
 }
+
+const Main = styled.div`
+  width: 632px;
+  margin: 60px;
+`;
