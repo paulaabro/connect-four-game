@@ -6,43 +6,36 @@ export default function RulesPage() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <Container>
-        <Title>Rules</Title>
-        <Subtitle>Objective</Subtitle>
+    <Container>
+      <Title>Rules</Title>
+      <Subtitle>Objective</Subtitle>
+      <Description>
+        Be the first player to connect 4 of the same colored discs in a row (either vertically,
+        horizontally, or diagonally).
+      </Description>
+      <Subtitle>How to play</Subtitle>
+      <div>
+        <ItemNumber>1</ItemNumber>
+        <Description>Red goes first in the first game.</Description>
+      </div>
+      <div>
+        <ItemNumber>2</ItemNumber>
         <Description>
-          Be the first player to connect 4 of the same colored discs in a row
-          (either vertically, horizontally, or diagonally).
+          Players must alternate turns, and only one disc can be dropped in each turn.
         </Description>
-        <Subtitle>How to play</Subtitle>
-        <div>
-          <ItemNumber>1</ItemNumber>
-          <Description>Red goes first in the first game.</Description>
-        </div>
-        <div>
-          <ItemNumber>2</ItemNumber>
-          <Description>
-            Players must alternate turns, and only one disc can be dropped in
-            each turn.
-          </Description>
-        </div>
-        <div>
-          <ItemNumber>3</ItemNumber>
-          <Description>
-            The game ends when there is a 4-in-a-row or a stalemate.
-          </Description>
-        </div>
-        <div>
-          <ItemNumber>4</ItemNumber>
-          <Description>
-            The starter of the previous game goes second on the next game.
-          </Description>
-        </div>
-        <Button onClick={() => navigate("/game")}>
-          <img src={iconcheck} alt="check_icon" />
-        </Button>
-      </Container>
-    </>
+      </div>
+      <div>
+        <ItemNumber>3</ItemNumber>
+        <Description>The game ends when there is a 4-in-a-row or a stalemate.</Description>
+      </div>
+      <div>
+        <ItemNumber>4</ItemNumber>
+        <Description>The starter of the previous game goes second on the next game.</Description>
+      </div>
+      <Button onClick={() => navigate("/game")}>
+        <img src={iconcheck} alt="check_icon" />
+      </Button>
+    </Container>
   );
 }
 
@@ -50,10 +43,10 @@ const Container = styled.div`
   width: 480px;
   height: 537px;
   border-radius: 40px;
-  background-color: ${(props) => props.theme.white};
-  border: 3px solid ${(props) => props.theme.black};
-  box-shadow: 0px 10px 0px ${(props) => props.theme.black};
-  color: ${(props) => props.theme.black};
+  background-color: ${props => props.theme.white};
+  border: 3px solid ${props => props.theme.black};
+  box-shadow: 0px 10px 0px ${props => props.theme.black};
+  color: ${props => props.theme.black};
   padding: 30px 34px;
   position: relative;
 
@@ -75,7 +68,7 @@ const Subtitle = styled.h2`
   margin: 32px 0 16px;
   font-size: 20px;
   line-height: 26px;
-  color: ${(props) => props.theme.purple};
+  color: ${props => props.theme.purple};
   text-transform: uppercase;
 `;
 
