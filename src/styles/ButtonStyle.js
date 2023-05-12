@@ -9,11 +9,11 @@ export const ButtonStyle = styled.button`
 
   background-color: ${props => props.theme[props.bgcolor]};
   border: 3px solid ${props => props.theme.black};
-  box-shadow: 0 10px 0px ${props => props.theme.black};
+  box-shadow: 0 10px 0 ${props => props.theme.black};
   border-radius: 20px;
 
   &:hover {
     border-color: ${props => props.theme.darkPurple};
-    box-shadow: 0 10px 0px ${props => props.theme.darkPurple};
+    box-shadow: 0 10px 0 ${props => props.theme.darkPurple};
   }
 `;
