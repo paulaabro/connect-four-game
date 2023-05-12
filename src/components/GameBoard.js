@@ -34,7 +34,7 @@ const Container = styled.div`
 const Turn = styled.div`
   position: absolute;
   bottom: -120px;
-  color: ${(props) => props.theme.white};
+  color: ${props => props.theme.white};
 
   div {
     display: flex;

@@ -36,5 +36,5 @@ export default function GamePage() {
 
 const Main = styled.div`
   width: 632px;
-  margin: 60px;
+  margin: 0 60px;
 `;
