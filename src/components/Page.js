@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-export default function Page({ children, bgColor }) {
-  return <Container bgColor={bgColor}>{children}</Container>;
+export default function Page({ children, bgcolor }) {
+  return <Container bgcolor={bgcolor}>{children}</Container>;
 }
 
 const Container = styled.div`
@@ -12,5 +12,5 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme[props.bgColor]};
+  background-color: ${props => props.theme[props.bgcolor]};
 `;

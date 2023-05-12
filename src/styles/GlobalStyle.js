@@ -105,9 +105,11 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
     background-color: ${props => props.theme.purple};
+    color: ${props => props.theme.black};
   }
 
   button {
+    transition: all 400ms;
     cursor: pointer;
   }
 `;

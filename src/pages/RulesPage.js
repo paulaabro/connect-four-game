@@ -2,12 +2,14 @@ import { styled } from "styled-components";
 import iconcheck from "../assets/images/icon-check.svg";
 import { useNavigate } from "react-router-dom";
 import Page from "../components/Page";
+import { BorderStyle } from "../styles/BorderStyle";
+import { ButtonStyle } from "../styles/ButtonStyle";
 
 export default function RulesPage() {
   const navigate = useNavigate();
 
   return (
-    <Page bgColor="purple">
+    <Page bgcolor="purple">
       <Container>
         <Title>Rules</Title>
         <Subtitle>Objective</Subtitle>
@@ -42,14 +44,10 @@ export default function RulesPage() {
   );
 }
 
-const Container = styled.div`
+const Container = styled(BorderStyle)`
   width: 480px;
   height: 537px;
-  border-radius: 40px;
   background-color: ${props => props.theme.white};
-  border: 3px solid ${props => props.theme.black};
-  box-shadow: 0 10px 0px ${props => props.theme.black};
-  color: ${props => props.theme.black};
   padding: 30px 34px;
   position: relative;
 
@@ -88,10 +86,20 @@ const ItemNumber = styled.p`
   line-height: 20px;
 `;
 
-const Button = styled.button`
+const Button = styled(ButtonStyle)`
+  width: 64px;
+  height: 64px;
+
   display: block;
   margin: 0 auto;
   position: absolute;
   bottom: -40px;
   left: calc(50% - 32px);
+
+  border-radius: 50%;
+  box-shadow: 0 5px 0 ${props => props.theme.black};
+
+  &:hover {
+    box-shadow: 0 5px 0 ${props => props.theme.darkPurple};
+  }
 `;
