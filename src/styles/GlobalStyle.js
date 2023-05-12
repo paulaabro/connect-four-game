@@ -104,12 +104,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
-    background-color: ${(props) => props.theme.purple};
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: ${props => props.theme.purple};
   }
 
   button {

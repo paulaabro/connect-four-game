@@ -1,41 +1,44 @@
 import { styled } from "styled-components";
 import iconcheck from "../assets/images/icon-check.svg";
 import { useNavigate } from "react-router-dom";
+import Page from "../components/Page";
 
 export default function RulesPage() {
   const navigate = useNavigate();
 
   return (
-    <Container>
-      <Title>Rules</Title>
-      <Subtitle>Objective</Subtitle>
-      <Description>
-        Be the first player to connect 4 of the same colored discs in a row (either vertically,
-        horizontally, or diagonally).
-      </Description>
-      <Subtitle>How to play</Subtitle>
-      <div>
-        <ItemNumber>1</ItemNumber>
-        <Description>Red goes first in the first game.</Description>
-      </div>
-      <div>
-        <ItemNumber>2</ItemNumber>
+    <Page bgColor="purple">
+      <Container>
+        <Title>Rules</Title>
+        <Subtitle>Objective</Subtitle>
         <Description>
-          Players must alternate turns, and only one disc can be dropped in each turn.
+          Be the first player to connect 4 of the same colored discs in a row (either vertically,
+          horizontally, or diagonally).
         </Description>
-      </div>
-      <div>
-        <ItemNumber>3</ItemNumber>
-        <Description>The game ends when there is a 4-in-a-row or a stalemate.</Description>
-      </div>
-      <div>
-        <ItemNumber>4</ItemNumber>
-        <Description>The starter of the previous game goes second on the next game.</Description>
-      </div>
-      <Button onClick={() => navigate("/game")}>
-        <img src={iconcheck} alt="check_icon" />
-      </Button>
-    </Container>
+        <Subtitle>How to play</Subtitle>
+        <div>
+          <ItemNumber>1</ItemNumber>
+          <Description>Red goes first in the first game.</Description>
+        </div>
+        <div>
+          <ItemNumber>2</ItemNumber>
+          <Description>
+            Players must alternate turns, and only one disc can be dropped in each turn.
+          </Description>
+        </div>
+        <div>
+          <ItemNumber>3</ItemNumber>
+          <Description>The game ends when there is a 4-in-a-row or a stalemate.</Description>
+        </div>
+        <div>
+          <ItemNumber>4</ItemNumber>
+          <Description>The starter of the previous game goes second on the next game.</Description>
+        </div>
+        <Button onClick={() => navigate("/game")}>
+          <img src={iconcheck} alt="check_icon" />
+        </Button>
+      </Container>
+    </Page>
   );
 }
 
@@ -45,7 +48,7 @@ const Container = styled.div`
   border-radius: 40px;
   background-color: ${props => props.theme.white};
   border: 3px solid ${props => props.theme.black};
-  box-shadow: 0px 10px 0px ${props => props.theme.black};
+  box-shadow: 0 10px 0px ${props => props.theme.black};
   color: ${props => props.theme.black};
   padding: 30px 34px;
   position: relative;
