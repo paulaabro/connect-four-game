@@ -104,8 +104,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-weight: 700;
     font-family: 'Space Grotesk', sans-serif;
-    background-color: ${props => props.theme.purple};
-    color: ${props => props.theme.black};
+    background-color: ${(props) => props.theme.purple};
+    color: ${(props) => props.theme.black};
   }
 
   button {

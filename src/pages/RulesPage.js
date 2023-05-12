@@ -14,8 +14,8 @@ export default function RulesPage() {
         <Title>Rules</Title>
         <Subtitle>Objective</Subtitle>
         <Description>
-          Be the first player to connect 4 of the same colored discs in a row (either vertically,
-          horizontally, or diagonally).
+          Be the first player to connect 4 of the same colored discs in a row
+          (either vertically, horizontally, or diagonally).
         </Description>
         <Subtitle>How to play</Subtitle>
         <div>
@@ -25,18 +25,23 @@ export default function RulesPage() {
         <div>
           <ItemNumber>2</ItemNumber>
           <Description>
-            Players must alternate turns, and only one disc can be dropped in each turn.
+            Players must alternate turns, and only one disc can be dropped in
+            each turn.
           </Description>
         </div>
         <div>
           <ItemNumber>3</ItemNumber>
-          <Description>The game ends when there is a 4-in-a-row or a stalemate.</Description>
+          <Description>
+            The game ends when there is a 4-in-a-row or a stalemate.
+          </Description>
         </div>
         <div>
           <ItemNumber>4</ItemNumber>
-          <Description>The starter of the previous game goes second on the next game.</Description>
+          <Description>
+            The starter of the previous game goes second on the next game.
+          </Description>
         </div>
-        <Button onClick={() => navigate("/game")}>
+        <Button onClick={() => navigate("/")}>
           <img src={iconcheck} alt="check_icon" />
         </Button>
       </Container>
@@ -47,7 +52,7 @@ export default function RulesPage() {
 const Container = styled(BorderStyle)`
   width: 480px;
   height: 537px;
-  background-color: ${props => props.theme.white};
+  background-color: ${(props) => props.theme.white};
   padding: 30px 34px;
   position: relative;
 
@@ -69,7 +74,7 @@ const Subtitle = styled.h2`
   margin: 32px 0 16px;
   font-size: 20px;
   line-height: 26px;
-  color: ${props => props.theme.purple};
+  color: ${(props) => props.theme.purple};
   text-transform: uppercase;
 `;
 
@@ -97,9 +102,9 @@ const Button = styled(ButtonStyle)`
   left: calc(50% - 32px);
 
   border-radius: 50%;
-  box-shadow: 0 5px 0 ${props => props.theme.black};
+  box-shadow: 0 5px 0 ${(props) => props.theme.black};
 
   &:hover {
-    box-shadow: 0 5px 0 ${props => props.theme.darkPurple};
+    box-shadow: 0 5px 0 ${(props) => props.theme.darkPurple};
   }
 `;

@@ -5,14 +5,17 @@ import logo from "../assets/images/logo.svg";
 import { ButtonStyle } from "../styles/ButtonStyle";
 import playerVsCpu from "../assets/images/player-vs-cpu.svg";
 import playVsPlayer from "../assets/images/play-vs-player.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuPage() {
+  const navigate = useNavigate();
+
   return (
     <Page bgcolor="darkPurple">
       <Container>
         <img src={logo} alt="connect_four_logo" />
         <div>
-          <Button bgcolor="pink">
+          <Button bgcolor="pink" onClick={() => navigate("/game/cpu")}>
             <div>
               <span>PLAY VS CPU</span>
 
@@ -20,7 +23,7 @@ export default function MenuPage() {
             </div>
           </Button>
 
-          <Button bgcolor="yellow">
+          <Button bgcolor="yellow" onClick={() => navigate("/game/player")}>
             <div>
               <span>PLAY VS PLAYER</span>
 
@@ -28,7 +31,7 @@ export default function MenuPage() {
             </div>
           </Button>
 
-          <Button bgcolor="pink">
+          <Button bgcolor="white" onClick={() => navigate("/rules")}>
             <div>
               <span>GAME RULES</span>
             </div>
@@ -42,11 +45,18 @@ export default function MenuPage() {
 const Container = styled(BorderStyle)`
   width: 480px;
   height: 537px;
-  background-color: ${props => props.theme.purple};
+  background-color: ${(props) => props.theme.purple};
+  padding: 70px 40px 60px;
+
+  & > img {
+    display: block;
+    margin: 0 auto 79px;
+  }
 `;
 
 const Button = styled(ButtonStyle)`
   padding: 0 20px;
+  margin-bottom: 30px;
   div {
     display: flex;
     justify-content: space-between;
