@@ -7,7 +7,7 @@ import cpu from "../assets/images/cpu.svg";
 import playerTwo from "../assets/images/player-two.svg";
 import Top from "../components/Top";
 import { styled } from "styled-components";
-import GameBoard from "../components/GameBoard";
+import GameBoard from "../components/GameBoard/GameBoard";
 import { useEffect, useState } from "react";
 import { TIMER } from "../constants/timer";
 

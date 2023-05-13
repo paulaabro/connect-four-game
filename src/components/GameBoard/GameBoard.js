@@ -1,8 +1,11 @@
 import { styled } from "styled-components";
-import whiteboard from "../assets/images/board-layer-white-large.svg";
-import blackboard from "../assets/images/board-layer-black-large.svg";
-import turnRed from "../assets/images/turn-background-red.svg";
-import turnYellow from "../assets/images/turn-background-yellow.svg";
+import whiteboard from "../../assets/images/board-layer-white-large.svg";
+import blackboard from "../../assets/images/board-layer-black-large.svg";
+import turnRed from "../../assets/images/turn-background-red.svg";
+import turnYellow from "../../assets/images/turn-background-yellow.svg";
+import Game from "./Game";
+import BoardRow from "./BoardRow";
+
 
 export default function GameBoard({ counter, play, turn, opponent }) {
   const player = [
@@ -20,8 +23,9 @@ export default function GameBoard({ counter, play, turn, opponent }) {
 
   return (
     <Container>
-      <img src={blackboard} alt="game_board" />
-      <img src={whiteboard} alt="game_board" onClick={play} />
+        <Board pos="static" src={blackboard} alt="game_board" />
+        <Game />
+        <Board pos="absolute" src={whiteboard} alt="game_board" onClick={play} />
       <Turn color={player[turn].color}>
         <img src={player[turn].turn} alt="turn_red" />
         <div>
@@ -39,12 +43,11 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-
-  & > :nth-child(2) {
-    position: absolute;
-  }
+ 
 `;
-
+const Board = styled.img`
+  position: ${props => props.pos};
+`
 const Turn = styled.div`
   position: absolute;
   bottom: -120px;
