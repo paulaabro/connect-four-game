@@ -3,11 +3,11 @@ import whiteboard from "../assets/images/board-layer-white-large.svg";
 import blackboard from "../assets/images/board-layer-black-large.svg";
 import turn_red from "../assets/images/turn-background-red.svg";
 
-export default function GameBoard({ counter }) {
+export default function GameBoard({ counter, play }) {
   return (
     <Container>
       <img src={blackboard} alt="game_board" />
-      <img src={whiteboard} alt="game_board" />
+      <img src={whiteboard} alt="game_board" onClick={play} />
       <Turn>
         <img src={turn_red} alt="turn_red" />
         <div>

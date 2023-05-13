@@ -8,14 +8,13 @@ import playerTwo from "../assets/images/player-two.svg";
 import Top from "../components/Top";
 import { styled } from "styled-components";
 import GameBoard from "../components/GameBoard";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { TIMER } from "../constants/timer";
 
 export default function GamePage() {
   const { opponent } = useParams();
   const [counter, setCounter] = useState(TIMER);
-  const [score0, setScore0] = useState(0);
-  const [score1, setScore1] = useState(0);
+  const [scores, setScores] = useState([0, 0]);
   const [rounds, setRounds] = useState(0);
   const [turn, setTurn] = useState(0);
   const [pause, setPause] = useState(false);
@@ -26,32 +25,49 @@ export default function GamePage() {
     if (!pause) {
       interval = setInterval(() => {
         setCounter(counter => {
-          if (counter === 1) clearInterval(interval);
+          if (counter === 0) {
+            clearInterval(interval);
+            const newScores = [...scores];
+            const nextTurn = (turn + 1) % 2;
+            newScores[nextTurn]++;
+            setScores(newScores);
+            setTurn(nextTurn % 2);
+            return TIMER;
+          }
           return counter - 1;
         });
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [pause]);
+  }, [pause, turn]);
 
-  const play0 = {
-    name: opponent === "player" ? "Player 1" : "You",
-    image: opponent === "player" ? playerOne : you,
-  };
+  const players = [
+    {
+      name: opponent === "player" ? "Player 1" : "You",
+      image: opponent === "player" ? playerOne : you,
+    },
+    {
+      name: opponent === "player" ? "Player 2" : "CPU",
+      image: opponent === "player" ? playerTwo : cpu,
+    },
+  ];
 
-  const play1 = {
-    name: opponent === "player" ? "Player 2" : "CPU",
-    image: opponent === "player" ? playerTwo : cpu,
-  };
+  function play() {
+    const newScores = [...scores];
+    newScores[turn]++;
+    setScores(newScores);
+    setTurn((turn + 1) % 2);
+    setCounter(TIMER);
+  }
 
   return (
     <Page>
-      <PlayerCard play={play0} score={score0} />
+      <PlayerCard play={players[0]} score={scores[0]} />
       <Main>
         <Top pause={pause} setPause={setPause} />
-        <GameBoard counter={counter} />
+        <GameBoard counter={counter} play={play} />
       </Main>
-      <PlayerCard play={play1} score={score1} />
+      <PlayerCard play={players[1]} score={scores[1]} />
     </Page>
   );
 }
