@@ -3,16 +3,16 @@ import whiteboard from "../assets/images/board-layer-white-large.svg";
 import blackboard from "../assets/images/board-layer-black-large.svg";
 import turn_red from "../assets/images/turn-background-red.svg";
 
-export default function GameBoard() {
+export default function GameBoard({ counter, play }) {
   return (
     <Container>
       <img src={blackboard} alt="game_board" />
-      <img src={whiteboard} alt="game_board" />
+      <img src={whiteboard} alt="game_board" onClick={play} />
       <Turn>
         <img src={turn_red} alt="turn_red" />
         <div>
           <p>PLAYER 1’S TURN</p>
-          <h3>3s</h3>
+          <h3>{counter}s</h3>
         </div>
       </Turn>
     </Container>
@@ -34,7 +34,7 @@ const Container = styled.div`
 const Turn = styled.div`
   position: absolute;
   bottom: -120px;
-  color: ${(props) => props.theme.white};
+  color: ${props => props.theme.white};
 
   div {
     display: flex;

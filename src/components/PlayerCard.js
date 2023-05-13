@@ -14,14 +14,18 @@ export default function PlayerCard({ play, score }) {
 const Container = styled(BorderStyle)`
   width: 141px;
   height: 160px;
+
   border-radius: 20px;
-  background-color: ${(props) => props.theme.white};
+  background-color: ${props => props.theme.white};
   position: relative;
+
+  margin-bottom: 100px;
+  padding-top: 30px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 30px;
 
   p {
     font-size: 20px;
