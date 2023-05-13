@@ -24,7 +24,7 @@ export default function GamePage() {
 
     if (!pause) {
       interval = setInterval(() => {
-        setCounter(counter => {
+        setCounter((counter) => {
           if (counter === 0) {
             clearInterval(interval);
             const newScores = [...scores];
@@ -60,11 +60,16 @@ export default function GamePage() {
     setCounter(TIMER);
   }
 
+  function restart() {
+    setCounter(TIMER);
+    setScores([0, 0]);
+  }
+
   return (
     <Page>
       <PlayerCard play={players[0]} score={scores[0]} />
       <Main>
-        <Top pause={pause} setPause={setPause} />
+        <Top pause={pause} setPause={setPause} restart={restart} />
         <GameBoard counter={counter} play={play} />
       </Main>
       <PlayerCard play={players[1]} score={scores[1]} />
