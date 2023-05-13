@@ -1,12 +1,10 @@
 import { styled } from "styled-components";
 import logo from "../assets/images/logo.svg";
-import { useNavigate } from "react-router-dom";
 
-export default function Top() {
-  const navigate = useNavigate();
+export default function Top({ pause, setPause }) {
   return (
     <Container>
-      <ButtonTop onClick={() => navigate("/")}>MENU</ButtonTop>
+      <ButtonTop onClick={() => setPause(!pause)}>MENU</ButtonTop>
       <img src={logo} alt="connect_four_logo" />
       <ButtonTop>RESTART</ButtonTop>
     </Container>
@@ -21,8 +19,8 @@ const Container = styled.div`
 
 const ButtonTop = styled.button`
   height: 39 px;
-  background-color: ${(props) => props.theme.darkPurple};
-  color: ${(props) => props.theme.white};
+  background-color: ${props => props.theme.darkPurple};
+  color: ${props => props.theme.white};
   border-radius: 20px;
   padding: 10px 21px;
   font-size: 16px;

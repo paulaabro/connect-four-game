@@ -8,28 +8,50 @@ import playerTwo from "../assets/images/player-two.svg";
 import Top from "../components/Top";
 import { styled } from "styled-components";
 import GameBoard from "../components/GameBoard";
+import { useEffect, useState } from "react";
+import { TIMER } from "../constants/timer";
 
 export default function GamePage() {
   const { opponent } = useParams();
+  const [counter, setCounter] = useState(TIMER);
+  const [score0, setScore0] = useState(0);
+  const [score1, setScore1] = useState(0);
+  const [rounds, setRounds] = useState(0);
+  const [turn, setTurn] = useState(0);
+  const [pause, setPause] = useState(false);
 
-  const play1 = {
+  useEffect(() => {
+    let interval = null;
+
+    if (!pause) {
+      interval = setInterval(() => {
+        setCounter(counter => {
+          if (counter === 1) clearInterval(interval);
+          return counter - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [pause]);
+
+  const play0 = {
     name: opponent === "player" ? "Player 1" : "You",
     image: opponent === "player" ? playerOne : you,
   };
 
-  const play2 = {
+  const play1 = {
     name: opponent === "player" ? "Player 2" : "CPU",
     image: opponent === "player" ? playerTwo : cpu,
   };
 
   return (
     <Page>
-      <PlayerCard play={play1} score="11" />
+      <PlayerCard play={play0} score={score0} />
       <Main>
-        <Top />
-        <GameBoard />
+        <Top pause={pause} setPause={setPause} />
+        <GameBoard counter={counter} />
       </Main>
-      <PlayerCard play={play2} score="20" />
+      <PlayerCard play={play1} score={score1} />
     </Page>
   );
 }

@@ -3,7 +3,7 @@ import whiteboard from "../assets/images/board-layer-white-large.svg";
 import blackboard from "../assets/images/board-layer-black-large.svg";
 import turn_red from "../assets/images/turn-background-red.svg";
 
-export default function GameBoard() {
+export default function GameBoard({ counter }) {
   return (
     <Container>
       <img src={blackboard} alt="game_board" />
@@ -12,7 +12,7 @@ export default function GameBoard() {
         <img src={turn_red} alt="turn_red" />
         <div>
           <p>PLAYER 1’S TURN</p>
-          <h3>3s</h3>
+          <h3>{counter}s</h3>
         </div>
       </Turn>
     </Container>
