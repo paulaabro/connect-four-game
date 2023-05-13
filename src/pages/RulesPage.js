@@ -3,7 +3,7 @@ import iconcheck from "../assets/images/icon-check.svg";
 import { useNavigate } from "react-router-dom";
 import Page from "../components/Page";
 import { BorderStyle } from "../styles/BorderStyle";
-import { ButtonStyle } from "../styles/ButtonStyle";
+import { MenuButtonStyle } from "../styles/MenuButtonStyle";
 
 export default function RulesPage() {
   const navigate = useNavigate();
@@ -91,7 +91,7 @@ const ItemNumber = styled.p`
   line-height: 20px;
 `;
 
-const Button = styled(ButtonStyle)`
+const Button = styled(MenuButtonStyle)`
   width: 64px;
   height: 64px;
 
