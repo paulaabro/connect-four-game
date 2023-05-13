@@ -1,17 +1,31 @@
 import { styled } from "styled-components";
 import whiteboard from "../assets/images/board-layer-white-large.svg";
 import blackboard from "../assets/images/board-layer-black-large.svg";
-import turn_red from "../assets/images/turn-background-red.svg";
+import turnRed from "../assets/images/turn-background-red.svg";
+import turnYellow from "../assets/images/turn-background-yellow.svg";
 
-export default function GameBoard({ counter, play }) {
+export default function GameBoard({ counter, play, turn, opponent }) {
+  const player = [
+    {
+      name: opponent === "player" ? "PLAYER 1's" : "YOUR",
+      turn: turnRed,
+      color: "white",
+    },
+    {
+      name: opponent === "player" ? "PLAYER 2's" : "CPU's",
+      turn: turnYellow,
+      color: "black",
+    },
+  ];
+
   return (
     <Container>
       <img src={blackboard} alt="game_board" />
       <img src={whiteboard} alt="game_board" onClick={play} />
-      <Turn>
-        <img src={turn_red} alt="turn_red" />
+      <Turn color={player[turn].color}>
+        <img src={player[turn].turn} alt="turn_red" />
         <div>
-          <p>PLAYER 1’S TURN</p>
+          <p>{player[turn].name} TURN</p>
           <h3>{counter}s</h3>
         </div>
       </Turn>
@@ -34,7 +48,7 @@ const Container = styled.div`
 const Turn = styled.div`
   position: absolute;
   bottom: -120px;
-  color: ${props => props.theme.white};
+  color: ${(props) => props.theme[props.color]};
 
   div {
     display: flex;

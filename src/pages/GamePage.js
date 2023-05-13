@@ -8,14 +8,13 @@ import playerTwo from "../assets/images/player-two.svg";
 import Top from "../components/Top";
 import { styled } from "styled-components";
 import GameBoard from "../components/GameBoard";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TIMER } from "../constants/timer";
 
 export default function GamePage() {
   const { opponent } = useParams();
   const [counter, setCounter] = useState(TIMER);
   const [scores, setScores] = useState([0, 0]);
-  const [rounds, setRounds] = useState(0);
   const [turn, setTurn] = useState(0);
   const [pause, setPause] = useState(false);
 
@@ -39,7 +38,7 @@ export default function GamePage() {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [pause, turn]);
+  }, [pause, turn, scores]);
 
   const players = [
     {
@@ -70,7 +69,12 @@ export default function GamePage() {
       <PlayerCard play={players[0]} score={scores[0]} />
       <Main>
         <Top pause={pause} setPause={setPause} restart={restart} />
-        <GameBoard counter={counter} play={play} />
+        <GameBoard
+          counter={counter}
+          play={play}
+          turn={turn}
+          opponent={opponent}
+        />
       </Main>
       <PlayerCard play={players[1]} score={scores[1]} />
     </Page>
